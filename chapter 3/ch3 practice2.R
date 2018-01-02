@@ -1,0 +1,18 @@
+library(ISLR)
+library(MASS)
+data(Boston)
+names(Boston)
+?Boston
+lm.fit=lm(medv~lstat,data=Boston)
+summary(lm.fit)
+predict(lm.fit,data.frame(lstat=c(5,10,15)),interval="confidence")
+plot(lstat,medv)
+abline(lm.fit,col="red",lwd=5)
+plot(predict(lm.fit),residuals(lm.fit))
+plot(predict(lm.fit),rstudent(lm.fit))
+plot(hatvalues(lm.fit))
+lm.fit=lm(medv~.,data=Boston)
+summary(lm.fit)
+install.packages('car')
+update.packages(checkBuilt = TRUE)
+

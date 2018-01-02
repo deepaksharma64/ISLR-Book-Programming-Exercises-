@@ -1,0 +1,15 @@
+library(ISLR)
+library(MASS)
+data(Boston)
+names(Boston)
+?Boston
+lm.fit=lm(medv~lstat,data=Boston)
+summary(lm.fit)
+names(lm.fit)
+predict(lm.fit,data.frame(lstat=c(5,10,15)),interval="prediction")
+predict(lm.fit,data.frame(lstat=c(5,10,15)),interval="confidence")
+plot(Boston$lstat,Boston$medv)
+abline(lm.fit,col="red",lwd=5)
+plot(predict(lm.fit),residuals(lm.fit))
+plot(predict(lm.fit),rstudent(lm.fit))
+
